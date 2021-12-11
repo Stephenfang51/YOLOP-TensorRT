@@ -23,9 +23,9 @@ void doInference(IExecutionContext& context, cudaStream_t& stream, void **buffer
 int main(int argc, char**argv){
     cxxopts::Options options("YOLOP-TensorRT", "inference with image or video");
     options.add_options()
-        ("e,engine", "specify your engine path", cxxopts::value<std::string>())
-        ("img", "enter image directory", cxxopts::value<std::string>())
-        ("v,video", "enter a video", cxxopts::value<std::string>())
+        ("e,engine", "specify your engine path", cxxopts::value<std::string>()->default_value("build/yolop.engine"))
+        ("img", "enter image directory", cxxopts::value<std::string>()->default_value("examples/"))
+        ("v,video", "enter a video", cxxopts::value<std::string>()->implicit_value("demo_video/test.mp4"))
         ("s,show", "if show video result", cxxopts::value<bool>()->default_value("false"))
         ;
             
@@ -147,13 +147,15 @@ int main(int argc, char**argv){
 
     }; //end of img processing
     if (opt.count("v")){
-        cv::VideoCapture cap;
+        // cv::VideoCapture cap;
+        cv::VideoCapture cap(opt["video"].as<std::string>());
         int codec = cv::VideoWriter::fourcc('M', 'J', 'P', 'G');
         cv::VideoWriter writer("output.mp4", codec, 25.0, cv::Size(1280, 720));
-        cap.open(opt["video"].as<std::string>());
+        // cap.open(opt["video"].as<std::string>());
+        // std::cout << opt["video"].as<std::string>() ;
         if (!cap.isOpened()){
-        std::cerr << "fail to decodec file" <<std::endl;
-        return -1;
+            std::cerr << "fail to decodec file" <<std::endl;
+            return -1;
         }
         cv::namedWindow("YOLOP",cv::WINDOW_AUTOSIZE);
         // tep_seg;

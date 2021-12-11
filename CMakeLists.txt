@@ -15,18 +15,18 @@ find_package(CUDA REQUIRED)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(/usr/local/cuda-11.1/include)
 link_directories(/usr/local/cuda-11.1/targets/x86_64-linux/lib)
-include_directories(/home/stephen/TensorRT_installation/TensorRT-7.2.2.3/include)
-link_directories(/home/stephen/TensorRT_installation/TensorRT-7.2.2.3/targets/x86_64-linux-gnu/lib)
+include_directories(/home/yourpath/TensorRT_installation/TensorRT-7.2.2.3/include)
+link_directories(/home/yourpath/TensorRT_installation/TensorRT-7.2.2.3/targets/x86_64-linux-gnu/lib)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Ofast -Wfatal-errors -D_MWAITXINTRIN_H_INCLUDED")
 cuda_add_library(myplugins SHARED ${PROJECT_SOURCE_DIR}/src/yololayer.cu)
 target_link_libraries(myplugins nvinfer cudart)
 
-set(OpenCV_DIR /home/stephen/TensorRT_installation/OpenCV/lib64/cmake/opencv4/) #incase you can't find OpenCV, manually set OpenCV_DIR
+set(OpenCV_DIR /home/yourpath/TensorRT_installation/OpenCV/lib64/cmake/opencv4/) #incase you can't find OpenCV, manually set OpenCV_DIR
 
 #-----OpenCV----#
-# find_package(OpenCV PATHS /home/stephen/TensorRT_installation/OpenCV)
+# find_package(OpenCV PATHS /home/yourpath/TensorRT_installation/OpenCV)
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
