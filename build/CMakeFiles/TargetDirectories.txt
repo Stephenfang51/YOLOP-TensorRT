@@ -1,5 +1,0 @@
-/home/stephen/VScodeProjects/YOLOP-TensorRT/build/CMakeFiles/myplugins.dir
-/home/stephen/VScodeProjects/YOLOP-TensorRT/build/CMakeFiles/inf.dir
-/home/stephen/VScodeProjects/YOLOP-TensorRT/build/CMakeFiles/buildengine.dir
-/home/stephen/VScodeProjects/YOLOP-TensorRT/build/CMakeFiles/edit_cache.dir
-/home/stephen/VScodeProjects/YOLOP-TensorRT/build/CMakeFiles/rebuild_cache.dir
